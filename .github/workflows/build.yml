@@ -1,0 +1,55 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: swiss_pollen
+          path: ./custom_components/swiss_pollen
+
+  black:
+    name: Python code format check
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: "actions/checkout@v4"
+      - name: Black code format check
+        uses: lgeiger/black-action@master
+        with:
+          args: ". --check --fast --diff"
+
+  hassfest:
+    name: Hassfest validation
+    needs: [black]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: "actions/checkout@v4"
+      - uses: home-assistant/actions/hassfest@master
+
+  hacs:
+    name: HACS validation
+    needs: [black]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: "actions/checkout@v4"
+      - name: HACS validation
+        uses: "hacs/action@22.5.0"
+        with:
+          category: "integration"

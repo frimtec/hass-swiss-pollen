@@ -1,0 +1,14 @@
+{
+  "domain": "swiss_pollen",
+  "name": "Swiss pollen",
+  "codeowners": [
+    "@frimtec"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/frimtec/hass-swiss-pollen",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/frimtec/hass-swiss-pollen/issues",
+  "requirements": ["swiss-pollen==0.1.1"],
+  "version": "0.0.0"
+}
