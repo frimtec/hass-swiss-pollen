@@ -61,7 +61,9 @@ async def async_setup_entry(
     level_sensors = []
     for station in coordinator.data.stations:
         level_sensors.append(
-            SwissPollenSensorEntry(station.code, plant, None, None, None)
+            SwissPollenSensorEntry(
+                station.code, plant, None, SensorDeviceClass.ENUM, None
+            )
         )
 
     numeric_entities: list[SwissPollenSensorEntry] = [
@@ -139,6 +141,14 @@ class SwissPollenLevelSensor(
             name=f"MeteoSwiss pollen for {plant.name}",
             identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
         )
+        self._attr_options = [
+            "none",
+            "low",
+            "medium",
+            "strong",
+            "very_strong",
+        ]
+        self._attr_translation_key = "level"
         self._attr_icon = "mdi:flag"
 
     @property

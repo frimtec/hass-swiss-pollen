@@ -1,0 +1,16 @@
+{
+  "entity": {
+    "sensor": {
+      "level": {
+        "name": "Level",
+        "state": {
+          "none" : "Keine",
+          "low" : "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      }
+    }
+  }
+}
