@@ -1,11 +1,13 @@
 from typing import Dict, List
-from swiss_pollen import (PollenService, Station, Measurement)
+from swiss_pollen import PollenService, Station, Measurement
 from dataclasses import dataclass
+
 
 @dataclass
 class CurrentPollen:
     measurements: Dict[str, Measurement]
     stations: List[Station]
+
 
 class PollenClient(object):
     def get_current_pollen_for_all_stations(self) -> CurrentPollen:

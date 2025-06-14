@@ -15,22 +15,29 @@ from .pollen import CurrentPollen, PollenClient
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class SwissPollenDataCoordinator(DataUpdateCoordinator[CurrentPollen]):
     """Coordinates data loads for all sensors."""
 
-    _client : PollenClient = None
+    _client: PollenClient = None
 
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
         self._client = PollenClient()
         update_interval = timedelta(minutes=30)
-        super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=update_interval,
-                         always_update=False)
+        super().__init__(
+            hass,
+            _LOGGER,
+            name=DOMAIN,
+            update_interval=update_interval,
+            always_update=False,
+        )
 
     async def _async_update_data(self) -> CurrentPollen:
         _LOGGER.info("Loading current pollen states")
         try:
             current_state = await self.hass.async_add_executor_job(
-                self._client.get_current_pollen_for_all_stations)
+                self._client.get_current_pollen_for_all_stations
+            )
             _LOGGER.debug("Current state: %s", current_state)
         except Exception as e:
             _LOGGER.exception(e)

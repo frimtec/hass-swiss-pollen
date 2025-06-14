@@ -1,4 +1,5 @@
 """The Swiss pollen integration."""
+
 from __future__ import annotations
 
 import logging
@@ -13,6 +14,7 @@ from .coordinator import SwissPollenDataCoordinator
 _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS: list[Platform] = [Platform.SENSOR]
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Swiss pollen from a config entry."""
