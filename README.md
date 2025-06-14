@@ -23,7 +23,7 @@ Data integration is done via [swiss-pollen][swiss-pollen].
 
 ## Installation
 
-### HACS (Recommended)
+### HACS (coming soon)
 
 1. Make sure [HACS](https://hacs.xyz/) is installed in your Home Assistant instance
 2. Add this repository as a custom repository in HACS:
