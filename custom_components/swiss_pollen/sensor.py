@@ -5,7 +5,10 @@ from decimal import Decimal
 import logging
 from typing import Callable
 
-from config.custom_components.swiss_pollen.const import CONF_PLANT_NAME
+from config.custom_components.swiss_pollen.const import (
+    CONF_PLANT_NAME,
+    CONF_STATION_CODES,
+)
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -49,20 +52,22 @@ async def async_setup_entry(
 ) -> None:
     coordinator: SwissPollenDataCoordinator = hass.data[DOMAIN][config_entry.entry_id]
     plant: Plant = Plant[config_entry.data.get(CONF_PLANT_NAME)]
+    station_codes: Plant = config_entry.data.get(CONF_STATION_CODES)
 
     numeric_sensors = []
-    for station in coordinator.data.stations:
-        numeric_sensors.append(
-            SwissPollenSensorEntry(
-                station, plant, "No/m³", None, SensorStateClass.MEASUREMENT
-            )
-        )
-
     level_sensors = []
     for station in coordinator.data.stations:
-        level_sensors.append(
-            SwissPollenSensorEntry(station, plant, None, SensorDeviceClass.ENUM, None)
-        )
+        if station.code in station_codes:
+            numeric_sensors.append(
+                SwissPollenSensorEntry(
+                    station, plant, "No/m³", None, SensorStateClass.MEASUREMENT
+                )
+            )
+            level_sensors.append(
+                SwissPollenSensorEntry(
+                    station, plant, None, SensorDeviceClass.ENUM, None
+                )
+            )
 
     numeric_entities: list[SwissPollenSensorEntry] = [
         SwissPollenNumericSensor(plant, sensorEntry, coordinator)
