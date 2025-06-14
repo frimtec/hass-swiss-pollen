@@ -22,15 +22,15 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from . import SwissPollenDataCoordinator
 from .const import DOMAIN
 
-from swiss_pollen import Plant, Level
+from swiss_pollen import Plant, Level, Station
 
 _LOGGER = logging.getLogger(__name__)
 
 
 @dataclass
 class SwissPollenSensorEntry:
-    station: str
-    plant: plant
+    station: Station
+    plant: Plant
     native_unit: str
     device_class: SensorDeviceClass
     state_class: SensorStateClass
@@ -54,16 +54,14 @@ async def async_setup_entry(
     for station in coordinator.data.stations:
         numeric_sensors.append(
             SwissPollenSensorEntry(
-                station.code, plant, "No/m³", None, SensorStateClass.MEASUREMENT
+                station, plant, "No/m³", None, SensorStateClass.MEASUREMENT
             )
         )
 
     level_sensors = []
     for station in coordinator.data.stations:
         level_sensors.append(
-            SwissPollenSensorEntry(
-                station.code, plant, None, SensorDeviceClass.ENUM, None
-            )
+            SwissPollenSensorEntry(station, plant, None, SensorDeviceClass.ENUM, None)
         )
 
     numeric_entities: list[SwissPollenSensorEntry] = [
@@ -95,8 +93,10 @@ class SwissPollenNumericSensor(
             state_class=sensor_entry.state_class,
         )
         self._sensor_entry = sensor_entry
-        self._attr_name = f"{sensor_entry.plant.description} at {sensor_entry.station}"
-        self._attr_unique_id = f"{sensor_entry.station}.{sensor_entry.plant.name}"
+        self._attr_name = (
+            f"{sensor_entry.plant.description} @ {sensor_entry.station.name}"
+        )
+        self._attr_unique_id = f"{sensor_entry.station.code}.{sensor_entry.plant.name}"
         self._attr_device_info = DeviceInfo(
             entry_type=DeviceEntryType.SERVICE,
             name=f"MeteoSwiss pollen for {plant.name}",
@@ -109,7 +109,7 @@ class SwissPollenNumericSensor(
         if self.coordinator.data is None:
             return None
         measurement = self.coordinator.data.measurements.get(
-            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}", None
+            f"{self._sensor_entry.station.code}-{self._sensor_entry.plant.name}", None
         )
         return measurement.value if measurement is not None else None
 
@@ -133,9 +133,11 @@ class SwissPollenLevelSensor(
         )
         self._sensor_entry = sensor_entry
         self._attr_name = (
-            f"{sensor_entry.plant.description} at {sensor_entry.station} level"
+            f"{sensor_entry.plant.description} @ {sensor_entry.station.name} (Level)"
         )
-        self._attr_unique_id = f"{sensor_entry.station}.{sensor_entry.plant.name}.level"
+        self._attr_unique_id = (
+            f"{sensor_entry.station.code}.{sensor_entry.plant.name}.level"
+        )
         self._attr_device_info = DeviceInfo(
             entry_type=DeviceEntryType.SERVICE,
             name=f"MeteoSwiss pollen for {plant.name}",
@@ -156,7 +158,7 @@ class SwissPollenLevelSensor(
         if self.coordinator.data is None:
             return None
         measurement = self.coordinator.data.measurements.get(
-            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}", None
+            f"{self._sensor_entry.station.code}-{self._sensor_entry.plant.name}", None
         )
         return (
             Level.level(measurement.value).description
