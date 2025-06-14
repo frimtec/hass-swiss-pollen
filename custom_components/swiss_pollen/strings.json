@@ -24,7 +24,7 @@
           "low" : "Low",
           "medium": "Medium",
           "strong": "Strong",
-          "very_strong": "Very strong"
+          "very strong": "Very strong"
         }
       }
     }
