@@ -3,7 +3,8 @@
     "step": {
       "user": {
         "data": {
-          "plantName": "Plant name"
+          "plantName": "Plant for pollen data",
+          "stationCodes": "Stations for pollen data"
         }
       }
     },

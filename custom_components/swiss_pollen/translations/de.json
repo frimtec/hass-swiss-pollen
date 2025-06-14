@@ -1,4 +1,14 @@
 {
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "plantName": "Planze für Pollendaten",
+          "stationCodes": "Messstationen für Pollendaten"
+        }
+      }
+    }
+  },
   "entity": {
     "sensor": {
       "level": {
