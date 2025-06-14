@@ -153,7 +153,7 @@ class SwissPollenLevelSensor(
             "low",
             "medium",
             "strong",
-            "very strong",
+            "very_strong",
         ]
         self._attr_translation_key = "level"
         self._attr_icon = "mdi:flag"
