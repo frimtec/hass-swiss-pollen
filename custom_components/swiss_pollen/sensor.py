@@ -22,7 +22,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from . import SwissPollenDataCoordinator
 from .const import DOMAIN
 
-from swiss_pollen import Plant
+from swiss_pollen import Plant, Level
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -50,20 +50,34 @@ async def async_setup_entry(
     coordinator: SwissPollenDataCoordinator = hass.data[DOMAIN][config_entry.entry_id]
     plant: Plant = Plant[config_entry.data.get(CONF_PLANT_NAME)]
 
-    sensors = []
+    numeric_sensors = []
     for station in coordinator.data.stations:
-        sensors.append(
+        numeric_sensors.append(
             SwissPollenSensorEntry(
                 station.code, plant, "No/m³", None, SensorStateClass.MEASUREMENT
             )
         )
-    entities: list[SwissPollenSensorEntry] = [
-        SwissPollenSensor(plant, sensorEntry, coordinator) for sensorEntry in sensors
+
+    level_sensors = []
+    for station in coordinator.data.stations:
+        level_sensors.append(
+            SwissPollenSensorEntry(station.code, plant, None, None, None)
+        )
+
+    numeric_entities: list[SwissPollenSensorEntry] = [
+        SwissPollenNumericSensor(plant, sensorEntry, coordinator)
+        for sensorEntry in numeric_sensors
     ]
-    async_add_entities(entities)
+    level_entities: list[SwissPollenSensorEntry] = [
+        SwissPollenLevelSensor(plant, sensorEntry, coordinator)
+        for sensorEntry in level_sensors
+    ]
+    async_add_entities(numeric_entities + level_entities)
 
 
-class SwissPollenSensor(CoordinatorEntity[SwissPollenDataCoordinator], SensorEntity):
+class SwissPollenNumericSensor(
+    CoordinatorEntity[SwissPollenDataCoordinator], SensorEntity
+):
     def __init__(
         self,
         plant: Plant,
@@ -92,8 +106,50 @@ class SwissPollenSensor(CoordinatorEntity[SwissPollenDataCoordinator], SensorEnt
     def native_value(self) -> StateType | Decimal:
         if self.coordinator.data is None:
             return None
-        _LOGGER.info(f"%s", self.coordinator.data)
         measurement = self.coordinator.data.measurements.get(
             f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}", None
         )
         return measurement.value if measurement is not None else None
+
+
+class SwissPollenLevelSensor(
+    CoordinatorEntity[SwissPollenDataCoordinator], SensorEntity
+):
+    def __init__(
+        self,
+        plant: Plant,
+        sensor_entry: SwissPollenSensorEntry,
+        coordinator: SwissPollenDataCoordinator,
+    ) -> None:
+        super().__init__(coordinator)
+        self.entity_description = SensorEntityDescription(
+            key=sensor_entry.plant.name,
+            name=sensor_entry.plant.description,
+            native_unit_of_measurement=sensor_entry.native_unit,
+            device_class=sensor_entry.device_class,
+            state_class=sensor_entry.state_class,
+        )
+        self._sensor_entry = sensor_entry
+        self._attr_name = (
+            f"{sensor_entry.plant.description} at {sensor_entry.station} level"
+        )
+        self._attr_unique_id = f"{sensor_entry.station}.{sensor_entry.plant.name}.level"
+        self._attr_device_info = DeviceInfo(
+            entry_type=DeviceEntryType.SERVICE,
+            name=f"MeteoSwiss pollen for {plant.name}",
+            identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
+        )
+        self._attr_icon = "mdi:flag"
+
+    @property
+    def native_value(self) -> StateType | str:
+        if self.coordinator.data is None:
+            return None
+        measurement = self.coordinator.data.measurements.get(
+            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}", None
+        )
+        return (
+            Level.level(measurement.value).description
+            if measurement is not None
+            else None
+        )
