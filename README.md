@@ -64,7 +64,7 @@ For each selected station and plant type combination, the integration creates tw
 
 ---
 
-[hacs-shield]: https://img.shields.io/badge/HACS-Default-41BDF5.svg
+[hacs-shield]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs]: https://github.com/hacs/integration
 [downloads-latest-shield]:https://img.shields.io/github/downloads/frimtec/hass-swiss-pollen/latest/total
 [downloads-shield]:https://img.shields.io/github/downloads/frimtec/hass-swiss-pollen/total
