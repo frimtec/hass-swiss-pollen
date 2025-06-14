@@ -5,6 +5,7 @@ from decimal import Decimal
 import logging
 from typing import Callable
 
+from config.custom_components.swiss_pollen.const import CONF_PLANT_NAME
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -47,17 +48,17 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     coordinator: SwissPollenDataCoordinator = hass.data[DOMAIN][config_entry.entry_id]
+    plant: Plant = Plant[config_entry.data.get(CONF_PLANT_NAME)]
 
     sensors = []
     for station in coordinator.data.stations:
-        for plant in Plant:
-            sensors.append(
-                SwissPollenSensorEntry(
-                    station.code, plant, "No/m³", None, SensorStateClass.MEASUREMENT
-                )
+        sensors.append(
+            SwissPollenSensorEntry(
+                station.code, plant, "No/m³", None, SensorStateClass.MEASUREMENT
             )
+        )
     entities: list[SwissPollenSensorEntry] = [
-        SwissPollenSensor(sensorEntry, coordinator) for sensorEntry in sensors
+        SwissPollenSensor(plant, sensorEntry, coordinator) for sensorEntry in sensors
     ]
     async_add_entities(entities)
 
@@ -65,6 +66,7 @@ async def async_setup_entry(
 class SwissPollenSensor(CoordinatorEntity[SwissPollenDataCoordinator], SensorEntity):
     def __init__(
         self,
+        plant: Plant,
         sensor_entry: SwissPollenSensorEntry,
         coordinator: SwissPollenDataCoordinator,
     ) -> None:
@@ -81,8 +83,8 @@ class SwissPollenSensor(CoordinatorEntity[SwissPollenDataCoordinator], SensorEnt
         self._attr_unique_id = f"{sensor_entry.station}.{sensor_entry.plant.name}"
         self._attr_device_info = DeviceInfo(
             entry_type=DeviceEntryType.SERVICE,
-            name=f"MeteoSwiss",
-            identifiers={(DOMAIN, f"swisspollen")},
+            name=f"MeteoSwiss pollen for {plant.name}",
+            identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
         )
         self._attr_icon = "mdi:flower-pollen"
 
@@ -92,8 +94,6 @@ class SwissPollenSensor(CoordinatorEntity[SwissPollenDataCoordinator], SensorEnt
             return None
         _LOGGER.info(f"%s", self.coordinator.data)
         measurement = self.coordinator.data.measurements.get(
-            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}",
-            None
+            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}", None
         )
         return measurement.value if measurement is not None else None
-
