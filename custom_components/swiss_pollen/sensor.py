@@ -5,7 +5,6 @@ from decimal import Decimal
 import logging
 from typing import Callable
 
-from homeassistant.components.plant import Plant
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
