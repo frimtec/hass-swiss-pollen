@@ -91,6 +91,9 @@ class SwissPollenSensor(CoordinatorEntity[SwissPollenDataCoordinator], SensorEnt
         if self.coordinator.data is None:
             return None
         _LOGGER.info(f"%s", self.coordinator.data)
-        return self.coordinator.data.measurements[
-            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}"
-        ].value
+        measurement = self.coordinator.data.measurements.get(
+            f"{self._sensor_entry.station}-{self._sensor_entry.plant.name}",
+            None
+        )
+        return measurement.value if measurement is not None else None
+
