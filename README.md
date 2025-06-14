@@ -12,6 +12,7 @@
 [![Deploy Status][deploy-status-shield]][deploy-status]
 
 A Home Assistant integration that provides pollen data for Switzerland from [MeteoSchweiz][MeteoSchweiz].
+Data integration is done via [swiss-pollen][swiss-pollen].
 
 ## Features
 
@@ -76,3 +77,4 @@ For each selected station and plant type combination, the integration creates tw
 [deploy-status]: https://github.com/frimtec/hass-swiss-pollen/actions/workflows/deploy_release.yml
 [latest-release]: https://github.com/frimtec/hass-swiss-pollen/releases/latest
 [MeteoSchweiz]: https://www.meteoschweiz.admin.ch/service-und-publikationen/applikationen/pollenprognose.html
+[swiss-pollen]: https://github.com/frimtec/swiss-pollen
