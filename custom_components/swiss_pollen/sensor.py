@@ -51,7 +51,7 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     coordinator: SwissPollenDataCoordinator = hass.data[DOMAIN][config_entry.entry_id]
-    plant: Plant = Plant[config_entry.data.get(CONF_PLANT_NAME)]
+    plant: Plant = Plant[config_entry.data.get(CONF_PLANT_NAME).upper()]
     station_codes: Plant = config_entry.data.get(CONF_STATION_CODES)
 
     numeric_sensors = []
@@ -138,7 +138,7 @@ class SwissPollenLevelSensor(
         )
         self._sensor_entry = sensor_entry
         self._attr_name = (
-            f"{sensor_entry.plant.description} @ {sensor_entry.station.name} (Level)"
+            f"{sensor_entry.plant.description} @ {sensor_entry.station.name}"
         )
         self._attr_unique_id = (
             f"{sensor_entry.station.code}.{sensor_entry.plant.name}.level"

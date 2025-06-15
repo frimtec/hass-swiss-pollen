@@ -14,7 +14,19 @@
       "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
     }
   },
-
+  "selector": {
+    "plants": {
+      "options": {
+        "birch": "Birch",
+        "beech": "Beech",
+        "oak": "Oak",
+        "alder":  "Alder",
+        "ash": "Ash",
+        "grasses": "Grasses",
+        "hazel": "Hazel"
+      }
+    }
+  },
   "entity": {
     "sensor": {
       "level": {
