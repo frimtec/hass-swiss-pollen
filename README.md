@@ -47,9 +47,11 @@ This integration is not official developed, supported or endorsed by MeteoSchwei
 1. Go to Settings > Devices & Services
 2. Click "Add Integration"
 3. Search for "Swiss Pollen"
-4. Follow the configuration flow:
-   - Select the plant type you want to monitor
-   - Select one or more measurement stations
+4. Follow the configuration flow to set up a service for a specific plant:
+   - Select a plant of interesst
+   - Select one or more measurement stations to get sensors for these stations
+  
+You can setup multiple services, one for each plant you are interessted in.
 
 ## Available Sensors
 
