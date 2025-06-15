@@ -55,7 +55,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     {
                         vol.Required(CONF_PLANT_NAME): SelectSelector(
                             SelectSelectorConfig(
-                                options=plant_options, mode=SelectSelectorMode.DROPDOWN, translation_key="plants"
+                                options=plant_options,
+                                mode=SelectSelectorMode.DROPDOWN,
+                                translation_key="plants",
                             )
                         ),
                         vol.Required(CONF_STATION_CODES): SelectSelector(
