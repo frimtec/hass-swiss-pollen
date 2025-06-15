@@ -50,8 +50,7 @@ This integration is not official developed, supported or endorsed by MeteoSchwei
 4. Follow the configuration flow to set up a service for a specific plant:
    - Select a plant of interesst
    - Select one or more measurement stations to get sensors for these stations
-  
-You can setup multiple services, one for each plant you are interessted in.
+5. You can repeat step 4 to setup multiple services - one for each plant you are interessted in
 
 ## Available Sensors
 
