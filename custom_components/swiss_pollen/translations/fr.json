@@ -1,0 +1,47 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "L'appareil est déjà configuré"
+    },
+    "error": {
+      "cannot_connect": "Échec de connexion",
+      "invalid_auth": "Authentification invalide",
+      "unknown": "Erreur inattendue"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "plantName": "Plante pour les données de pollen",
+          "stationCodes": "Stations pour les données de pollen"
+        }
+      }
+    }
+  },
+  "selector": {
+    "plants": {
+      "options": {
+        "birch": "Bouleau",
+        "beech": "Hêtre",
+        "oak": "Chêne",
+        "alder": "Aulne",
+        "ash": "Frêne",
+        "grasses": "Graminées",
+        "hazel": "Noisetier"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "level": {
+        "name": "Niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Il dispositivo è già configurato"
+    },
+    "error": {
+      "cannot_connect": "Impossibile connettersi",
+      "invalid_auth": "Autenticazione non valida",
+      "unknown": "Errore imprevisto"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "plantName": "Pianta per i dati sui pollini",
+          "stationCodes": "Stazioni per i dati sui pollini"
+        }
+      }
+    }
+  },
+  "selector": {
+    "plants": {
+      "options": {
+        "birch": "Betulla",
+        "beech": "Faggio",
+        "oak": "Quercia",
+        "alder": "Ontano",
+        "ash": "Frassino",
+        "grasses": "Graminacee",
+        "hazel": "Nocciolo"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "level": {
+        "name": "Livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      }
+    }
+  }
+}
