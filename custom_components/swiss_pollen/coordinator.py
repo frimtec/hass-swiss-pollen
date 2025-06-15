@@ -4,15 +4,11 @@ import datetime
 from datetime import timedelta
 import logging
 
-from config.custom_components.swiss_pollen.const import (
-    CONF_PLANT_NAME,
-    CONF_STATION_CODES,
-)
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import DOMAIN
+from .const import CONF_PLANT_NAME, CONF_STATION_CODES, DOMAIN
 from .pollen import CurrentPollen, PollenClient, Plant
 
 _LOGGER = logging.getLogger(__name__)

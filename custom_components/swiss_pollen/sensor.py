@@ -3,12 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from decimal import Decimal
 import logging
-from typing import Callable
 
-from config.custom_components.swiss_pollen.const import (
-    CONF_PLANT_NAME,
-    CONF_STATION_CODES,
-)
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -23,7 +18,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import SwissPollenDataCoordinator
-from .const import DOMAIN
+from .const import CONF_PLANT_NAME, CONF_STATION_CODES, DOMAIN
 
 from swiss_pollen import Plant, Level, Station
 
