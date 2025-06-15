@@ -9,6 +9,19 @@
       }
     }
   },
+  "selector": {
+    "plants": {
+      "options": {
+        "birch": "Birke",
+        "beech": "Buche",
+        "oak": "Eiche",
+        "alder":  "Ahorn",
+        "ash": "Esche",
+        "grasses": "Gräser",
+        "hazel": "Hasel"
+      }
+    }
+  },
   "entity": {
     "sensor": {
       "level": {

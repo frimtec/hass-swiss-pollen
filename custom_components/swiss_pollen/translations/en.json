@@ -17,6 +17,19 @@
       }
     }
   },
+  "selector": {
+    "plants": {
+      "options": {
+        "birch": "Birch",
+        "beech": "Beech",
+        "oak": "Oak",
+        "alder":  "Alder",
+        "ash": "Ash",
+        "grasses": "Grasses",
+        "hazel": "Hazel"
+      }
+    }
+  },
   "entity": {
     "sensor": {
       "level": {

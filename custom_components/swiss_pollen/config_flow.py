@@ -39,7 +39,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 _LOGGER.debug("Stations received.", extra={"Stations": stations})
                 plant_options = [
                     SelectOptionDict(
-                        value=plant.name,
+                        value=plant.description,
                         label=self.format_plant_name_for_dropdown(plant),
                     )
                     for plant in Plant
@@ -55,7 +55,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     {
                         vol.Required(CONF_PLANT_NAME): SelectSelector(
                             SelectSelectorConfig(
-                                options=plant_options, mode=SelectSelectorMode.DROPDOWN
+                                options=plant_options, mode=SelectSelectorMode.DROPDOWN, translation_key="plants"
                             )
                         ),
                         vol.Required(CONF_STATION_CODES): SelectSelector(

@@ -24,7 +24,7 @@ class SwissPollenDataCoordinator(DataUpdateCoordinator[CurrentPollen]):
     _client: PollenClient = None
 
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
-        self._plant = Plant[config_entry.data.get(CONF_PLANT_NAME)]
+        self._plant = Plant[config_entry.data.get(CONF_PLANT_NAME).upper()]
         self._station_codes = config_entry.data.get(CONF_STATION_CODES)
         self._client = PollenClient()
         update_interval = timedelta(minutes=30)
