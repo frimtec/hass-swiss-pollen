@@ -138,7 +138,7 @@ class SwissPollenLevelSensor(
         )
         self._sensor_entry = sensor_entry
         self._attr_name = (
-            f"{sensor_entry.plant.description} @ {sensor_entry.station.name} (Level)"
+            f"{sensor_entry.plant.description} @ {sensor_entry.station.name}"
         )
         self._attr_unique_id = (
             f"{sensor_entry.station.code}.{sensor_entry.plant.name}.level"
