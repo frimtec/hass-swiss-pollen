@@ -14,6 +14,8 @@
 A Home Assistant integration that provides pollen data for Switzerland from [MeteoSchweiz][MeteoSchweiz].
 Data integration is done via [swiss-pollen][swiss-pollen].
 
+This integration is not official developed, supported or endorsed by MeteoSchweiz.
+
 ## Features
 
 - Provides pollen concentration data for various plant types in Switzerland
@@ -61,6 +63,9 @@ For each selected station and plant type combination, the integration creates tw
    - Entity ID format: `sensor.[station_code]_[plant_name]_level`
    - Possible values: None, Low, Medium, Strong, Very Strong
    - Icon: mdi:flag
+
+## Credits
+- [izacus](https://github.com/izacus): For his great integration [hass-swissweather](https://github.com/izacus/hass-swissweather) that was the insperation for this integration.
 
 ---
 
