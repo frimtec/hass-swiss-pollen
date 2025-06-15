@@ -16,7 +16,7 @@ from homeassistant.helpers.selector import (
     SelectSelectorConfig,
     SelectSelectorMode,
 )
-
+from homeassistant.util.location import distance
 from .const import DOMAIN, CONF_PLANT_NAME, CONF_STATION_CODES
 
 _LOGGER = logging.getLogger(__name__)
@@ -37,6 +37,13 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     self.load_station_list
                 )
                 _LOGGER.debug("Stations received.", extra={"Stations": stations})
+                if (
+                    self.hass.config.latitude is not None
+                    and self.hass.config.longitude is not None
+                ):
+                    stations = sorted(
+                        stations, key=lambda it: self._get_distance_to_station(it)
+                    )
                 plant_options = [
                     SelectOptionDict(
                         value=plant.description,
@@ -94,4 +101,15 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return f"{plant.name}"
 
     def format_station_name_for_dropdown(self, station: Station) -> str:
-        return f"{station.name} ({station.canton})"
+        distance = self._get_distance_to_station(station)
+        if distance is None:
+            return f"{station.name} ({station.canton}) / alt: {station.altitude} m"
+        else:
+            return f"{station.name} ({station.canton}) / dist: {distance / 1000:.0f} km; alt: {station.altitude} m"
+
+    def _get_distance_to_station(self, station: Station):
+        h_lat = self.hass.config.latitude
+        h_lng = self.hass.config.longitude
+        if h_lat is None or h_lng is None:
+            return None
+        return distance(h_lat, h_lng, station.latlong[0], station.latlong[1])
