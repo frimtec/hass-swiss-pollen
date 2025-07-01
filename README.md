@@ -25,16 +25,10 @@ This integration is not official developed, supported or endorsed by MeteoSchwei
 
 ## Installation
 
-### HACS (coming soon)
+### HACS (recommended)
 
-1. Make sure [HACS](https://hacs.xyz/) is installed in your Home Assistant instance
-2. Add this repository as a custom repository in HACS:
-   - Go to HACS > Integrations
-   - Click the three dots in the top right corner
-   - Select "Custom repositories"
-   - Add `https://github.com/frimtec/hass-swiss-pollen` with category "Integration"
-3. Click "Install" on the "Swiss Pollen" integration
-4. Restart Home Assistant
+You can install this component through [HACS](https://hacs.xyz/) to easily receive updates. Once HACS is installed, click this link:
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=frimtec&repository=hass-swiss-pollen)
 
 ### Manual Installation
 
@@ -70,7 +64,7 @@ For each selected station and plant type combination, the integration creates tw
 
 ---
 
-[hacs-shield]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
+[hacs-shield]: https://img.shields.io/badge/HACS-Custom-orange.svg
 [hacs]: https://github.com/hacs/integration
 [downloads-latest-shield]:https://img.shields.io/github/downloads/frimtec/hass-swiss-pollen/latest/total
 [downloads-shield]:https://img.shields.io/github/downloads/frimtec/hass-swiss-pollen/total
