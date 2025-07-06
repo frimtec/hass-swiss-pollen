@@ -14,7 +14,7 @@
 A Home Assistant integration that provides pollen data for Switzerland from [MeteoSchweiz][MeteoSchweiz].
 Data integration is done via [swiss-pollen][swiss-pollen].
 
-This integration is not official developed, supported or endorsed by MeteoSchweiz.
+This integration is not officially developed, supported or endorsed by MeteoSchweiz.
 
 ## Features
 
@@ -42,9 +42,9 @@ You can install this component through [HACS](https://hacs.xyz/) to easily recei
 2. Click "Add Integration"
 3. Search for "Swiss Pollen"
 4. Follow the configuration flow to set up a service for a specific plant:
-   - Select a plant of interesst
+   - Select a plant of interest
    - Select one or more measurement stations to get sensors for these stations
-5. You can repeat step 4 to setup multiple services - one for each plant you are interessted in
+5. You can repeat step 4) to set up multiple services, one for each plant you are interested in
 
 ## Available Sensors
 
@@ -55,9 +55,105 @@ For each selected station and plant type combination, the integration creates tw
    - Icon: mdi:flower-pollen
 
 2. **Level Sensor**: Shows the categorical level of pollen concentration
-   - Entity ID format: `sensor.[station_code]_[plant_name]_level`
+   - Entity ID format: `sensor.[station_code]_[plant_name]_2`
    - Possible values: None, Low, Medium, Strong, Very Strong
    - Icon: mdi:flag
+
+## Example Dashboard
+![dashboard-example.png](images/dashboard-example.png)
+<details>
+
+<summary>YAML-Code</summary>
+
+```
+- type: grid
+  cards:
+    - type: heading
+      heading: 🌳Pollen
+      heading_style: title
+    - type: markdown
+      content: >-
+        <img
+        src="https://github.com/frimtec/hass-swiss-pollen/blob/main/images/grass.png?raw=true"
+        alt="Gräser" width="55" height="70">
+
+        &nbsp;&nbsp;&nbsp;Gräser
+      grid_options:
+        columns: 3
+        rows: 2
+    - type: horizontal-stack
+      cards:
+        - type: tile
+          name: ' Zürich'
+          entity: sensor.grasses_zurich
+          features_position: bottom
+          vertical: false
+          hide_state: false
+        - type: tile
+          name: ' Zürich'
+          entity: sensor.grasses_zurich_2
+          features_position: bottom
+          vertical: false
+      grid_options:
+        columns: 9
+        rows: auto
+    - type: horizontal-stack
+      cards:
+        - type: tile
+          name: ' Bern'
+          entity: sensor.grasses_bern
+          features_position: bottom
+          vertical: false
+        - type: tile
+          name: '  Bern'
+          entity: sensor.grasses_bern_2
+          features_position: bottom
+          vertical: false
+      grid_options:
+        columns: 9
+        rows: auto
+    - type: markdown
+      content: >-
+        <img
+        src="https://github.com/frimtec/hass-swiss-pollen/blob/main/images/birch.png?raw=true"
+        alt="Birke" width="55" height="70">
+
+        &nbsp;&nbsp;&nbsp;Birke
+      grid_options:
+        columns: 3
+        rows: 2
+    - type: horizontal-stack
+      cards:
+        - type: tile
+          name: ' Zürich'
+          entity: sensor.birch_zurich
+          features_position: bottom
+          vertical: false
+        - type: tile
+          name: '  Zürich'
+          entity: sensor.birch_zurich_2
+          features_position: bottom
+          vertical: false
+      grid_options:
+        columns: 9
+        rows: auto
+    - type: horizontal-stack
+      cards:
+        - type: tile
+          name: '  Bern'
+          entity: sensor.birch_bern
+          features_position: bottom
+          vertical: false
+        - type: tile
+          name: '  Bern'
+          entity: sensor.birch_bern_2
+          features_position: bottom
+          vertical: false
+      grid_options:
+        columns: 9
+        rows: auto
+```
+</details>
 
 ## Credits
 - [izacus](https://github.com/izacus): For his great integration [hass-swissweather](https://github.com/izacus/hass-swissweather) that was the insperation for this integration.
