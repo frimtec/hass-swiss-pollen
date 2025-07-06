@@ -7,6 +7,7 @@ from dataclasses import dataclass
 class CurrentPollen:
     measurements: Dict[str, Measurement]
     stations: List[Station]
+    active: bool
 
 
 class PollenClient(object):
@@ -15,8 +16,11 @@ class PollenClient(object):
     ) -> CurrentPollen:
         result = {}
         pollen_data = PollenService.current_values(plants=[plant])
+        active = False
         for station in pollen_data.keys():
-            if station.code in station_codes:
-                for measurement in pollen_data.get(station):
+            for measurement in pollen_data.get(station):
+                if measurement.value > 0:
+                    active = True
+                if station.code in station_codes:
                     result[f"{station.code}-{measurement.plant.name}"] = measurement
-        return CurrentPollen(result, pollen_data.keys())
+        return CurrentPollen(result, pollen_data.keys(), active)
