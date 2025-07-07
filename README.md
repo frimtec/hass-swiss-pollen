@@ -84,13 +84,13 @@ For each selected station and plant type combination, the integration creates tw
     - type: horizontal-stack
       cards:
         - type: tile
-          name: ' Zürich'
+          name: Zürich
           entity: sensor.grasses_zurich
           features_position: bottom
           vertical: false
           hide_state: false
         - type: tile
-          name: ' Zürich'
+          name: Zürich
           entity: sensor.grasses_zurich_2
           features_position: bottom
           vertical: false
@@ -100,12 +100,12 @@ For each selected station and plant type combination, the integration creates tw
     - type: horizontal-stack
       cards:
         - type: tile
-          name: ' Bern'
+          name: Bern
           entity: sensor.grasses_bern
           features_position: bottom
           vertical: false
         - type: tile
-          name: '  Bern'
+          name: Bern
           entity: sensor.grasses_bern_2
           features_position: bottom
           vertical: false
@@ -125,12 +125,12 @@ For each selected station and plant type combination, the integration creates tw
     - type: horizontal-stack
       cards:
         - type: tile
-          name: ' Zürich'
+          name: Zürich
           entity: sensor.birch_zurich
           features_position: bottom
           vertical: false
         - type: tile
-          name: '  Zürich'
+          name: Zürich
           entity: sensor.birch_zurich_2
           features_position: bottom
           vertical: false
@@ -140,12 +140,12 @@ For each selected station and plant type combination, the integration creates tw
     - type: horizontal-stack
       cards:
         - type: tile
-          name: '  Bern'
+          name: Bern
           entity: sensor.birch_bern
           features_position: bottom
           vertical: false
         - type: tile
-          name: '  Bern'
+          name: Bern
           entity: sensor.birch_bern_2
           features_position: bottom
           vertical: false
