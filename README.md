@@ -155,9 +155,6 @@ For each selected station and plant type combination, the integration creates tw
 ```
 </details>
 
-## Credits
-- [izacus](https://github.com/izacus): For his great integration [hass-swissweather](https://github.com/izacus/hass-swissweather) that was the insperation for this integration.
-
 ---
 
 [hacs-shield]: https://img.shields.io/badge/HACS-Default-blue.svg
