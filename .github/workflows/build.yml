@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Upload zip
         uses: actions/upload-artifact@v4
@@ -29,7 +29,7 @@ jobs:
     name: Python code format check
     runs-on: ubuntu-22.04
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: "actions/checkout@v5"
       - name: Black code format check
         uses: lgeiger/black-action@master
         with:
@@ -40,7 +40,7 @@ jobs:
     needs: [black]
     runs-on: ubuntu-22.04
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: "actions/checkout@v5"
       - uses: home-assistant/actions/hassfest@master
 
   hacs:
@@ -48,7 +48,7 @@ jobs:
     needs: [black]
     runs-on: ubuntu-22.04
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: "actions/checkout@v5"
       - name: HACS validation
         uses: "hacs/action@22.5.0"
         with:
