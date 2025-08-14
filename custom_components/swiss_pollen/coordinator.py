@@ -1,14 +1,14 @@
 """Coordinates updates for pollen data."""
 
-import datetime
 import logging
 from datetime import timedelta
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
+from swiss_pollen import Plant
 from .const import CONF_PLANT_NAME, CONF_STATION_CODES, DOMAIN
-from .pollen import CurrentPollen, PollenClient, Plant
+from .pollen import CurrentPollen, PollenClient
 
 DEFAULT_POLLING_INTERVAL_MINUTES = 30
 MAX_POLLING_INTERVAL_MINUTES = 8 * 60
@@ -43,23 +43,18 @@ class SwissPollenDataCoordinator(DataUpdateCoordinator[CurrentPollen]):
         )
         try:
             current_state = await self.hass.async_add_executor_job(
-                self._client.get_current_pollen_for_plant,
-                self._plant,
-                self._station_codes,
+                self._client.get_current_pollen_for_plant, self._plant
             )
-            if current_state.active is False:
+
+            if current_state.is_plant_active():
+                self._polling_interval = DEFAULT_POLLING_INTERVAL_MINUTES
+            else:
                 self._polling_interval = min(
                     MAX_POLLING_INTERVAL_MINUTES,
                     self._polling_interval * 2,
                 )
-            else:
-                self._polling_interval = DEFAULT_POLLING_INTERVAL_MINUTES
             self.update_interval = timedelta(minutes=self._polling_interval)
-            _LOGGER.debug(
-                "Polling interval: %d min; Current state: %s",
-                self._polling_interval,
-                current_state,
-            )
+            _LOGGER.debug("Polling interval: %d min", self._polling_interval)
         except Exception as e:
             _LOGGER.exception(e)
             raise UpdateFailed(f"Update failed: {e}") from e

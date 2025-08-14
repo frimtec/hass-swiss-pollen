@@ -94,8 +94,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     def load_station_list(self) -> list[Station]:
         _LOGGER.info("Requesting stations ...")
-        pollen_data = PollenService.current_values()
-        return pollen_data.keys()
+        return PollenService.load().current_values.keys()
 
     def format_plant_name_for_dropdown(self, plant: Plant) -> str:
         return f"{plant.name}"
