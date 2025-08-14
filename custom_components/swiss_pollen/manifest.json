@@ -9,6 +9,6 @@
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/frimtec/hass-swiss-pollen/issues",
-  "requirements": ["swiss-pollen==1.0.3"],
+  "requirements": ["swiss-pollen==1.1.0"],
   "version": "0.0.0"
 }

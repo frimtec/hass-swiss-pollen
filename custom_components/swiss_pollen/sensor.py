@@ -51,8 +51,9 @@ async def async_setup_entry(
 
     numeric_sensors = []
     level_sensors = []
-    for station in coordinator.data.stations:
-        if station.code in station_codes:
+    for station_code in station_codes:
+        if station_code in station_codes:
+            station = coordinator.data.station_by_code(station_code)
             numeric_sensors.append(
                 SwissPollenSensorEntry(
                     station, plant, "No/m³", None, SensorStateClass.MEASUREMENT
@@ -108,10 +109,7 @@ class SwissPollenNumericSensor(
     def native_value(self) -> StateType | Decimal:
         if self.coordinator.data is None:
             return None
-        measurement = self.coordinator.data.measurements.get(
-            f"{self._sensor_entry.station.code}-{self._sensor_entry.plant.name}", None
-        )
-        return measurement.value if measurement is not None else None
+        return self.coordinator.data.value_by_station(self._sensor_entry.station)
 
 
 class SwissPollenLevelSensor(
@@ -157,11 +155,4 @@ class SwissPollenLevelSensor(
     def native_value(self) -> StateType | str:
         if self.coordinator.data is None:
             return None
-        measurement = self.coordinator.data.measurements.get(
-            f"{self._sensor_entry.station.code}-{self._sensor_entry.plant.name}", None
-        )
-        return (
-            Level.level(measurement.value).description
-            if measurement is not None
-            else None
-        )
+        return self.coordinator.data.level_by_station(self._sensor_entry.station)
