@@ -33,6 +33,9 @@
           "strong": "Stark",
           "very_strong": "Sehr stark"
         }
+      },
+      "backend_version": {
+        "name": "Backend-Version"
       }
     },
     "binary_sensor": {

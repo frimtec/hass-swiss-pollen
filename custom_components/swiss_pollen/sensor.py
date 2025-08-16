@@ -16,6 +16,7 @@ from homeassistant.helpers.device_registry import DeviceEntryType
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.const import EntityCategory
 
 from . import SwissPollenDataCoordinator
 from .const import CONF_PLANT_NAME, CONF_STATION_CODES, DOMAIN
@@ -38,6 +39,14 @@ def first_or_none(value):
     if value is None or len(value) < 1:
         return None
     return value[0]
+
+
+def device_info(plant):
+    return DeviceInfo(
+        entry_type=DeviceEntryType.SERVICE,
+        name=f"MeteoSwiss pollen for {plant.name}",
+        identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
+    )
 
 
 async def async_setup_entry(
@@ -73,7 +82,11 @@ async def async_setup_entry(
         SwissPollenLevelSensor(plant, sensorEntry, coordinator)
         for sensorEntry in level_sensors
     ]
-    async_add_entities(numeric_entities + level_entities)
+    async_add_entities(
+        numeric_entities
+        + level_entities
+        + [SwissPollenVersionSensor(plant, coordinator)]
+    )
 
 
 class SwissPollenNumericSensor(
@@ -98,11 +111,7 @@ class SwissPollenNumericSensor(
             f"{sensor_entry.plant.description} @ {sensor_entry.station.name}"
         )
         self._attr_unique_id = f"{sensor_entry.station.code}.{sensor_entry.plant.name}"
-        self._attr_device_info = DeviceInfo(
-            entry_type=DeviceEntryType.SERVICE,
-            name=f"MeteoSwiss pollen for {plant.name}",
-            identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
-        )
+        self._attr_device_info = device_info(plant)
         self._attr_icon = "mdi:flower-pollen"
 
     @property
@@ -136,11 +145,7 @@ class SwissPollenLevelSensor(
         self._attr_unique_id = (
             f"{sensor_entry.station.code}.{sensor_entry.plant.name}.level"
         )
-        self._attr_device_info = DeviceInfo(
-            entry_type=DeviceEntryType.SERVICE,
-            name=f"MeteoSwiss pollen for {plant.name}",
-            identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
-        )
+        self._attr_device_info = device_info(plant)
         self._attr_options = [
             "none",
             "low",
@@ -156,3 +161,30 @@ class SwissPollenLevelSensor(
         if self.coordinator.data is None:
             return None
         return self.coordinator.data.level_by_station(self._sensor_entry.station)
+
+
+class SwissPollenVersionSensor(
+    CoordinatorEntity[SwissPollenDataCoordinator], SensorEntity
+):
+    def __init__(
+        self,
+        plant: Plant,
+        coordinator: SwissPollenDataCoordinator,
+    ) -> None:
+        super().__init__(coordinator)
+        self.entity_description = SensorEntityDescription(
+            key=f"{plant.name}.remote.version",
+            name="remote version",
+            entity_category=EntityCategory.DIAGNOSTIC,
+        )
+        self._attr_has_entity_name = True
+        self.translation_key = "backend_version"
+        self._attr_unique_id = f"{plant.name}.backend_version"
+        self._attr_device_info = device_info(plant)
+        self._attr_icon = "mdi:label-outline"
+
+    @property
+    def native_value(self) -> StateType | str:
+        if self.coordinator.data is None:
+            return None
+        return self.coordinator.data.backend_version()
