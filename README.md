@@ -50,17 +50,20 @@ You can install this component through [HACS](https://hacs.xyz/) to easily recei
 
 For each selected station and plant type combination, the integration creates two sensors:
 
-1. **Numeric Sensor**: Shows the pollen concentration in No/m³ (number per cubic meter)
+1. **Numeric concentration (Sensor)**: Shows the pollen concentration in No/m³ (number per cubic meter)
    - Entity ID format: `sensor.[station_code]_[plant_name]`
    - Icon: mdi:flower-pollen
 
-2. **Level Sensor**: Shows the categorical level of pollen concentration
+2. **Level (Sensor)**: Shows the categorical level of pollen concentration
    - Entity ID format: `sensor.[station_code]_[plant_name]_2`
    - Possible values: None, Low, Medium, Strong, Very Strong
    - Icon: mdi:flag
+3. **Plant season (BinarySensor)**: Shows whether the plant has pollen season or not. The sensor is 'on' if at least one station in Switzerland reports a value greater than zero).
+4. **Backend version (Diagnostic sensor)**: Shows the version of the backend providing the pollen data.
 
 ## Example Dashboard
-![dashboard-example.png](images/dashboard-example.png)
+### Standard UI
+![dashboard-example.png](images/dashboard-example-1.png)
 <details>
 
 <summary>YAML-Code</summary>
@@ -155,6 +158,177 @@ For each selected station and plant type combination, the integration creates tw
 ```
 </details>
 
+### Mushroom
+Requires HACS component [lovelace-mushroom][lovelace-mushroom].
+
+![dashboard-example.png](images/dashboard-example-2.png)
+
+<details>
+
+<summary>YAML-Code</summary>
+
+```
+- type: grid
+  cards:
+    - type: heading
+      heading: 🌳Pollen
+      heading_style: title
+    - type: custom:mushroom-template-card
+      grid_options:
+        columns: 2
+        rows: 1
+      tap_action:
+        action: none
+      layout: vertical
+    - type: custom:mushroom-template-card
+      icon: mdi:city
+      primary: Zürich
+      grid_options:
+        columns: 5
+        rows: 1
+      icon_color: blue
+    - type: custom:mushroom-template-card
+      icon: mdi:city
+      primary: Bern
+      grid_options:
+        columns: 5
+        rows: 1
+      icon_color: blue
+    - type: custom:mushroom-template-card
+      grid_options:
+        columns: 2
+        rows: 1
+      tap_action:
+        action: none
+      layout: vertical
+      picture: >-
+        https://github.com/frimtec/hass-swiss-pollen/blob/main/images/grass.png?raw=true
+      badge_icon: >-
+        {% set state = states('binary_sensor.meteoswiss_pollen_for_grasses_saison') %}
+        {% if state == 'on' %}
+        mdi:flower-pollen  
+        {% endif %}
+      badge_color: >-
+        {% set state = states('binary_sensor.meteoswiss_pollen_for_grasses_saison') %}
+        {% if state == 'on' %}
+        green 
+        {% endif %}
+    - type: custom:mushroom-template-card
+      icon: mdi:flower-pollen
+      entity: sensor.grasses_zurich
+      primary: '{{ state_translated(''sensor.grasses_zurich_2'') }}'
+      secondary: '{{ states(''sensor.grasses_zurich'') }} No/m³'
+      grid_options:
+        columns: 5
+        rows: 1
+      tap_action:
+        action: more-info
+      icon_color: |-
+        {% set state = states('sensor.grasses_zurich_2') %}
+        {% if state == 'none' %}
+          grey  
+        {% elif state == 'low' %}
+          blue
+        {% elif state == 'medium' %}
+          yellow
+        {% elif state == 'strong' %}
+          orange
+        {% elif state == 'very_strong' %}
+          red
+        {% endif %}
+    - type: custom:mushroom-template-card
+      icon: mdi:flower-pollen
+      entity: sensor.grasses_bern
+      primary: '{{ state_translated(''sensor.grasses_bern_2'') }}'
+      secondary: '{{ states(''sensor.grasses_bern'') }} No/m³'
+      grid_options:
+        columns: 5
+        rows: 1
+      tap_action:
+        action: more-info
+      icon_color: |-
+        {% set state = states('sensor.grasses_bern_2') %}
+        {% if state == 'none' %}
+          grey  
+        {% elif state == 'low' %}
+          blue
+        {% elif state == 'medium' %}
+          yellow
+        {% elif state == 'strong' %}
+          orange
+        {% elif state == 'very_strong' %}
+          red
+        {% endif %}
+    - type: custom:mushroom-template-card
+      grid_options:
+        columns: 2
+        rows: 1
+      tap_action:
+        action: none
+      layout: vertical
+      picture: >-
+        https://github.com/frimtec/hass-swiss-pollen/blob/main/images/birch.png?raw=true
+      badge_icon: >-
+        {% set state =
+        states('binary_sensor.meteoswiss_pollen_for_birch_saison') %}
+        {% if state == 'on' %}
+        mdi:flower-pollen  
+        {% endif %}
+      badge_color: >-
+        {% set state =
+        states('binary_sensor.meteoswiss_pollen_for_birch_saison') %}
+        {% if state == 'on' %}
+        green
+        {% endif %}
+    - type: custom:mushroom-template-card
+      icon: mdi:flower-pollen
+      entity: sensor.birch_zurich
+      primary: '{{ state_translated(''sensor.birch_zurich_2'') }}'
+      secondary: '{{ states(''sensor.birch_zurich'') }} No/m³'
+      grid_options:
+        columns: 5
+        rows: 1
+      tap_action:
+        action: more-info
+      icon_color: |-
+        {% set state = states('sensor.birch_zurich_2') %}
+        {% if state == 'none' %}
+          grey  
+        {% elif state == 'low' %}
+          blue
+        {% elif state == 'medium' %}
+          yellow
+        {% elif state == 'strong' %}
+          orange
+        {% elif state == 'very_strong' %}
+          red
+        {% endif %}
+    - type: custom:mushroom-template-card
+      icon: mdi:flower-pollen
+      entity: sensor.birch_bern
+      primary: '{{ state_translated(''sensor.birch_bern_2'') }}'
+      secondary: '{{ states(''sensor.birch_bern'') }} No/m³'
+      grid_options:
+        columns: 5
+        rows: 1
+      tap_action:
+        action: more-info
+      icon_color: |-
+        {% set state = states('sensor.birch_bern_2') %}
+        {% if state == 'none' %}
+          grey  
+        {% elif state == 'low' %}
+          blue
+        {% elif state == 'medium' %}
+          yellow
+        {% elif state == 'strong' %}
+          orange
+        {% elif state == 'very_strong' %}
+          red
+        {% endif %}
+```
+</details>
+
 ---
 
 [hacs-shield]: https://img.shields.io/badge/HACS-Default-blue.svg
@@ -171,3 +345,4 @@ For each selected station and plant type combination, the integration creates tw
 [latest-release]: https://github.com/frimtec/hass-swiss-pollen/releases/latest
 [MeteoSchweiz]: https://www.meteoschweiz.admin.ch/service-und-publikationen/applikationen/pollenprognose.html
 [swiss-pollen]: https://github.com/frimtec/swiss-pollen
+[lovelace-mushroom]: https://github.com/piitaya/lovelace-mushroom
