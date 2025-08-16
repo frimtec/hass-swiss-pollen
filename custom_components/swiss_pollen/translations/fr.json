@@ -41,6 +41,14 @@
           "strong": "Fort",
           "very_strong": "Très fort"
         }
+      },
+      "backend_version": {
+        "name": "Version du backend"
+      }
+    },
+    "binary_sensor": {
+      "season": {
+        "name": "Saison"
       }
     }
   }

@@ -20,6 +20,9 @@ class CurrentPollen:
     def station_by_code(self, station_code: str) -> Station:
         return self._pollen_result.station_by_code(station_code)
 
+    def backend_version(self) -> str:
+        return self._pollen_result.backend_version
+
     def is_plant_active(self):
         for station in self._pollen_result.current_values.keys():
             value_by_station = self.value_by_station(station)
