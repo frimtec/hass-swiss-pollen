@@ -42,6 +42,11 @@
           "very_strong": "Molto forte"
         }
       }
+    },
+    "binary_sensor": {
+      "season": {
+        "name": "Stagione"
+      }
     }
   }
 }
