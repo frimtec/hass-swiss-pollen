@@ -44,12 +44,19 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     stations = sorted(
                         stations, key=lambda it: self._get_distance_to_station(it)
                     )
+
+                already_existing_plants = {
+                    entry.data.get(CONF_PLANT_NAME)
+                    for entry in self._async_current_entries()
+                }
+
                 plant_options = [
                     SelectOptionDict(
                         value=plant.description,
                         label=self.format_plant_name_for_dropdown(plant),
                     )
                     for plant in Plant
+                    if plant.description not in already_existing_plants
                 ]
                 station_options = [
                     SelectOptionDict(
