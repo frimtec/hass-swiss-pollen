@@ -12,8 +12,6 @@ from homeassistant.components.sensor import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.device_registry import DeviceEntryType
-from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.const import EntityCategory
@@ -39,14 +37,6 @@ def first_or_none(value):
     if value is None or len(value) < 1:
         return None
     return value[0]
-
-
-def device_info(plant):
-    return DeviceInfo(
-        entry_type=DeviceEntryType.SERVICE,
-        name=f"MeteoSwiss pollen for {plant.name}",
-        identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
-    )
 
 
 async def async_setup_entry(
@@ -107,11 +97,10 @@ class SwissPollenNumericSensor(
             state_class=sensor_entry.state_class,
         )
         self._sensor_entry = sensor_entry
-        self._attr_name = (
-            f"{sensor_entry.plant.description} @ {sensor_entry.station.name}"
-        )
+        self._attr_has_entity_name = True
+        self.translation_key = f"{sensor_entry.station.code.lower()}_numeric"
         self._attr_unique_id = f"{sensor_entry.station.code}.{sensor_entry.plant.name}"
-        self._attr_device_info = device_info(plant)
+        self._attr_device_info = SwissPollenDataCoordinator.device_info(plant)
         self._attr_icon = "mdi:flower-pollen"
 
     @property
@@ -139,13 +128,12 @@ class SwissPollenLevelSensor(
             state_class=sensor_entry.state_class,
         )
         self._sensor_entry = sensor_entry
-        self._attr_name = (
-            f"{sensor_entry.plant.description} @ {sensor_entry.station.name}"
-        )
+        self._attr_has_entity_name = True
+        self.translation_key = f"{sensor_entry.station.code.lower()}_level"
         self._attr_unique_id = (
             f"{sensor_entry.station.code}.{sensor_entry.plant.name}.level"
         )
-        self._attr_device_info = device_info(plant)
+        self._attr_device_info = SwissPollenDataCoordinator.device_info(plant)
         self._attr_options = [
             "none",
             "low",
@@ -153,7 +141,6 @@ class SwissPollenLevelSensor(
             "strong",
             "very_strong",
         ]
-        self._attr_translation_key = "level"
         self._attr_icon = "mdi:flag"
 
     @property
@@ -180,7 +167,7 @@ class SwissPollenVersionSensor(
         self._attr_has_entity_name = True
         self.translation_key = "backend_version"
         self._attr_unique_id = f"{plant.name}.backend_version"
-        self._attr_device_info = device_info(plant)
+        self._attr_device_info = SwissPollenDataCoordinator.device_info(plant)
         self._attr_icon = "mdi:label-outline"
 
     @property

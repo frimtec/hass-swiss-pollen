@@ -8,8 +8,6 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.device_registry import DeviceEntryType
-from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -50,11 +48,7 @@ class SwissPollenPlantSensor(
         )
         self._attr_has_entity_name = True
         self._attr_unique_id = f"{plant.name}.season"
-        self._attr_device_info = DeviceInfo(
-            entry_type=DeviceEntryType.SERVICE,
-            name=f"MeteoSwiss pollen for {plant.name}",
-            identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
-        )
+        self._attr_device_info = SwissPollenDataCoordinator.device_info(plant)
         self.translation_key = "season"
 
     @property

@@ -1,13 +1,5 @@
 {
   "config": {
-    "abort": {
-      "already_configured": "Il dispositivo è già configurato"
-    },
-    "error": {
-      "cannot_connect": "Impossibile connettersi",
-      "invalid_auth": "Autenticazione non valida",
-      "unknown": "Errore imprevisto"
-    },
     "step": {
       "user": {
         "data": {
@@ -30,10 +22,44 @@
       }
     }
   },
+  "device": {
+    "birch": {
+      "name": "Betulla"
+    },
+    "beech": {
+      "name": "Faggio"
+    },
+    "oak": {
+      "name": "Quercia"
+    },
+    "alder": {
+      "name": "Ontano"
+    },
+    "ash": {
+      "name": "Frassino"
+    },
+    "grasses": {
+      "name": "Graminacee"
+    },
+    "hazel": {
+      "name": "Nocciolo"
+    }
+  },
   "entity": {
+    "binary_sensor": {
+      "season": {
+        "name": "Stagione"
+      }
+    },
     "sensor": {
-      "level": {
-        "name": "Livello",
+      "backend_version": {
+        "name": "Versione del backend"
+      },
+      "pzh_numeric": {
+        "name": "Zurigo concentrazione"
+      },
+      "pzh_level": {
+        "name": "Zurigo livello",
         "state": {
           "none": "Nessuno",
           "low": "Basso",
@@ -42,13 +68,200 @@
           "very_strong": "Molto forte"
         }
       },
-      "backend_version": {
-        "name": "Versione del backend"
-      }
-    },
-    "binary_sensor": {
-      "season": {
-        "name": "Stagione"
+      "plz_numeric": {
+        "name": "Lucerna concentrazione"
+      },
+      "plz_level": {
+        "name": "Lucerna livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pbs_numeric": {
+        "name": "Basilea concentrazione"
+      },
+      "pbs_level": {
+        "name": "Basilea livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pbe_numeric": {
+        "name": "Berna concentrazione"
+      },
+      "pbe_level": {
+        "name": "Berna livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pmu_numeric": {
+        "name": "Münsterlingen concentrazione"
+      },
+      "pmu_level": {
+        "name": "Münsterlingen livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pju_numeric": {
+        "name": "Jungfraujoch concentrazione"
+      },
+      "pju_level": {
+        "name": "Jungfraujoch livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pbu_numeric": {
+        "name": "Buchs concentrazione"
+      },
+      "pbu_level": {
+        "name": "Buchs livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pne_numeric": {
+        "name": "Neuchâtel concentrazione"
+      },
+      "pne_level": {
+        "name": "Neuchâtel livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pcf_numeric": {
+        "name": "La Chaux-de-Fonds concentrazione"
+      },
+      "pcf_level": {
+        "name": "La Chaux-de-Fonds livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "ppy_numeric": {
+        "name": "Payerne concentrazione"
+      },
+      "ppy_level": {
+        "name": "Payerne livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "psn_numeric": {
+        "name": "Sion concentrazione"
+      },
+      "psn_level": {
+        "name": "Sion livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pds_numeric": {
+        "name": "Davos concentrazione"
+      },
+      "pds_level": {
+        "name": "Davos livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "plo_numeric": {
+        "name": "Locarno concentrazione"
+      },
+      "plo_level": {
+        "name": "Locarno livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pls_numeric": {
+        "name": "Losanna concentrazione"
+      },
+      "pls_level": {
+        "name": "Losanna livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "plu_numeric": {
+        "name": "Lugano concentrazione"
+      },
+      "plu_level": {
+        "name": "Lugano livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
+      },
+      "pge_numeric": {
+        "name": "Ginevra concentrazione"
+      },
+      "pge_level": {
+        "name": "Ginevra livello",
+        "state": {
+          "none": "Nessuno",
+          "low": "Basso",
+          "medium": "Medio",
+          "strong": "Forte",
+          "very_strong": "Molto forte"
+        }
       }
     }
   }
