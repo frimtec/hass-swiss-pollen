@@ -1,13 +1,5 @@
 {
   "config": {
-    "abort": {
-      "already_configured": "L'appareil est déjà configuré"
-    },
-    "error": {
-      "cannot_connect": "Échec de connexion",
-      "invalid_auth": "Authentification invalide",
-      "unknown": "Erreur inattendue"
-    },
     "step": {
       "user": {
         "data": {
@@ -30,10 +22,44 @@
       }
     }
   },
+  "device": {
+    "birch": {
+      "name": "Bouleau"
+    },
+    "beech": {
+      "name": "Hêtre"
+    },
+    "oak": {
+      "name": "Chêne"
+    },
+    "alder": {
+      "name": "Aulne"
+    },
+    "ash": {
+      "name": "Frêne"
+    },
+    "grasses": {
+      "name": "Graminées"
+    },
+    "hazel": {
+      "name": "Noisetier"
+    }
+  },
   "entity": {
+    "binary_sensor": {
+      "season": {
+        "name": "Saison"
+      }
+    },
     "sensor": {
-      "level": {
-        "name": "Niveau",
+      "backend_version": {
+        "name": "Version du backend"
+      },
+      "pzh_numeric": {
+        "name": "Zurich concentration"
+      },
+      "pzh_level": {
+        "name": "Zurich niveau",
         "state": {
           "none": "Aucun",
           "low": "Faible",
@@ -42,13 +68,200 @@
           "very_strong": "Très fort"
         }
       },
-      "backend_version": {
-        "name": "Version du backend"
-      }
-    },
-    "binary_sensor": {
-      "season": {
-        "name": "Saison"
+      "plz_numeric": {
+        "name": "Lucerne concentration"
+      },
+      "plz_level": {
+        "name": "Lucerne niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pbs_numeric": {
+        "name": "Bâle concentration"
+      },
+      "pbs_level": {
+        "name": "Bâle niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pbe_numeric": {
+        "name": "Berne concentration"
+      },
+      "pbe_level": {
+        "name": "Berne niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pmu_numeric": {
+        "name": "Münsterlingen concentration"
+      },
+      "pmu_level": {
+        "name": "Münsterlingen niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pju_numeric": {
+        "name": "Jungfraujoch concentration"
+      },
+      "pju_level": {
+        "name": "Jungfraujoch niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pbu_numeric": {
+        "name": "Buchs concentration"
+      },
+      "pbu_level": {
+        "name": "Buchs niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pne_numeric": {
+        "name": "Neuchâtel concentration"
+      },
+      "pne_level": {
+        "name": "Neuchâtel niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pcf_numeric": {
+        "name": "La Chaux-de-Fonds concentration"
+      },
+      "pcf_level": {
+        "name": "La Chaux-de-Fonds niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "ppy_numeric": {
+        "name": "Payerne concentration"
+      },
+      "ppy_level": {
+        "name": "Payerne niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "psn_numeric": {
+        "name": "Sion concentration"
+      },
+      "psn_level": {
+        "name": "Sion niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pds_numeric": {
+        "name": "Davos concentration"
+      },
+      "pds_level": {
+        "name": "Davos niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "plo_numeric": {
+        "name": "Locarno concentration"
+      },
+      "plo_level": {
+        "name": "Locarno niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pls_numeric": {
+        "name": "Lausanne concentration"
+      },
+      "pls_level": {
+        "name": "Lausanne niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "plu_numeric": {
+        "name": "Lugano concentration"
+      },
+      "plu_level": {
+        "name": "Lugano niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
+      },
+      "pge_numeric": {
+        "name": "Genève concentration"
+      },
+      "pge_level": {
+        "name": "Genève niveau",
+        "state": {
+          "none": "Aucun",
+          "low": "Faible",
+          "medium": "Moyen",
+          "strong": "Fort",
+          "very_strong": "Très fort"
+        }
       }
     }
   }

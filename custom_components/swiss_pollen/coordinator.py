@@ -9,6 +9,8 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from swiss_pollen import Plant
 from .const import CONF_PLANT_NAME, CONF_STATION_CODES, DOMAIN
 from .pollen import CurrentPollen, PollenClient
+from homeassistant.helpers.device_registry import DeviceEntryType
+from homeassistant.helpers.entity import DeviceInfo
 
 DEFAULT_POLLING_INTERVAL_MINUTES = 30
 MAX_POLLING_INTERVAL_MINUTES = 8 * 60
@@ -60,3 +62,11 @@ class SwissPollenDataCoordinator(DataUpdateCoordinator[CurrentPollen]):
             raise UpdateFailed(f"Update failed: {e}") from e
 
         return current_state
+
+    @staticmethod
+    def device_info(plant):
+        return DeviceInfo(
+            entry_type=DeviceEntryType.SERVICE,
+            translation_key=plant.description,
+            identifiers={(DOMAIN, f"swisspollen-{plant.name}")},
+        )

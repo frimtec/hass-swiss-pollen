@@ -1,13 +1,5 @@
 {
   "config": {
-    "abort": {
-      "already_configured": "Device is already configured"
-    },
-    "error": {
-      "cannot_connect": "Failed to connect",
-      "invalid_auth": "Invalid authentication",
-      "unknown": "Unexpected error"
-    },
     "step": {
       "user": {
         "data": {
@@ -23,32 +15,253 @@
         "birch": "Birch",
         "beech": "Beech",
         "oak": "Oak",
-        "alder":  "Alder",
+        "alder": "Alder",
         "ash": "Ash",
         "grasses": "Grasses",
         "hazel": "Hazel"
       }
     }
   },
+  "device": {
+    "birch": {
+      "name": "Birch"
+    },
+    "beech": {
+      "name": "Beech"
+    },
+    "oak": {
+      "name": "Oak"
+    },
+    "alder": {
+      "name": "Alder"
+    },
+    "ash": {
+      "name": "Ash"
+    },
+    "grasses": {
+      "name": "Grasses"
+    },
+    "hazel": {
+      "name": "Hazel"
+    }
+  },
   "entity": {
+    "binary_sensor": {
+      "season": {
+        "name": "Season"
+      }
+    },
     "sensor": {
-      "level": {
-        "name": "Level",
+      "backend_version": {
+        "name": "Backend version"
+      },
+      "pzh_numeric": {
+        "name": "Zurich concentration"
+      },
+      "pzh_level": {
+        "name": "Zurich level",
         "state": {
-          "none" : "None",
-          "low" : "Low",
+          "none": "None",
+          "low": "Low",
           "medium": "Medium",
           "strong": "Strong",
           "very_strong": "Very strong"
         }
       },
-      "backend_version": {
-        "name": "Backend version"
-      }
-    },
-    "binary_sensor": {
-      "season": {
-        "name": "Season"
+      "plz_numeric": {
+        "name": "Lucerne concentration"
+      },
+      "plz_level": {
+        "name": "Lucerne level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pbs_numeric": {
+        "name": "Basel concentration"
+      },
+      "pbs_level": {
+        "name": "Basel level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pbe_numeric": {
+        "name": "Bern concentration"
+      },
+      "pbe_level": {
+        "name": "Bern level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pmu_numeric": {
+        "name": "Munsterlingen concentration"
+      },
+      "pmu_level": {
+        "name": "Munsterlingen level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pju_numeric": {
+        "name": "Jungfraujoch concentration"
+      },
+      "pju_level": {
+        "name": "Jungfraujoch level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pbu_numeric": {
+        "name": "Buchs concentration"
+      },
+      "pbu_level": {
+        "name": "Buchs level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pne_numeric": {
+        "name": "Neuchâtel concentration"
+      },
+      "pne_level": {
+        "name": "Neuchâtel level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pcf_numeric": {
+        "name": "La Chaux-de-Fonds concentration"
+      },
+      "pcf_level": {
+        "name": "La Chaux-de-Fonds level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "ppy_numeric": {
+        "name": "Payerne concentration"
+      },
+      "ppy_level": {
+        "name": "Payerne level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "psn_numeric": {
+        "name": "Sion concentration"
+      },
+      "psn_level": {
+        "name": "Sion level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pds_numeric": {
+        "name": "Davos concentration"
+      },
+      "pds_level": {
+        "name": "Davos level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "plo_numeric": {
+        "name": "Locarno concentration"
+      },
+      "plo_level": {
+        "name": "Locarno level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pls_numeric": {
+        "name": "Lausanne concentration"
+      },
+      "pls_level": {
+        "name": "Lausanne level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "plu_numeric": {
+        "name": "Lugano concentration"
+      },
+      "plu_level": {
+        "name": "Lugano level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
+      },
+      "pge_numeric": {
+        "name": "Geneva concentration"
+      },
+      "pge_level": {
+        "name": "Geneva level",
+        "state": {
+          "none": "None",
+          "low": "Low",
+          "medium": "Medium",
+          "strong": "Strong",
+          "very_strong": "Very strong"
+        }
       }
     }
   }

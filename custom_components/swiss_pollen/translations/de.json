@@ -15,32 +15,253 @@
         "birch": "Birke",
         "beech": "Buche",
         "oak": "Eiche",
-        "alder":  "Ahorn",
+        "alder": "Ahorn",
         "ash": "Esche",
         "grasses": "Gräser",
         "hazel": "Hasel"
       }
     }
   },
+  "device": {
+    "birch": {
+      "name": "Birke"
+    },
+    "beech": {
+      "name": "Buche"
+    },
+    "oak": {
+      "name": "Eiche"
+    },
+    "alder": {
+      "name": "Ahorn"
+    },
+    "ash": {
+      "name": "Esche"
+    },
+    "grasses": {
+      "name": "Gräser"
+    },
+    "hazel": {
+      "name": "Hasel"
+    }
+  },
   "entity": {
+    "binary_sensor": {
+      "season": {
+        "name": "Saison"
+      }
+    },
     "sensor": {
-      "level": {
-        "name": "Stufe",
+      "backend_version": {
+        "name": "Backend-Version"
+      },
+      "pzh_numeric": {
+        "name": "Zürich Konzentration"
+      },
+      "pzh_level": {
+        "name": "Zürich Stufe",
         "state": {
-          "none" : "Keine",
-          "low" : "Tief",
+          "none": "Keine",
+          "low": "Tief",
           "medium": "Mittel",
           "strong": "Stark",
           "very_strong": "Sehr stark"
         }
       },
-      "backend_version": {
-        "name": "Backend-Version"
-      }
-    },
-    "binary_sensor": {
-      "season": {
-        "name": "Saison"
+      "plz_numeric": {
+        "name": "Luzern Konzentration"
+      },
+      "plz_level": {
+        "name": "Luzern Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pbs_numeric": {
+        "name": "Basel Konzentration"
+      },
+      "pbs_level": {
+        "name": "Basel Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pbe_numeric": {
+        "name": "Bern Konzentration"
+      },
+      "pbe_level": {
+        "name": "Bern Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pmu_numeric": {
+        "name": "Münsterlingen Konzentration"
+      },
+      "pmu_level": {
+        "name": "Münsterlingen Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pju_numeric": {
+        "name": "Jungfraujoch Konzentration"
+      },
+      "pju_level": {
+        "name": "Jungfraujoch Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pbu_numeric": {
+        "name": "Buchs Konzentration"
+      },
+      "pbu_level": {
+        "name": "Buchs Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pne_numeric": {
+        "name": "Neuenburg Konzentration"
+      },
+      "pne_level": {
+        "name": "Neuenburg Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pcf_numeric": {
+        "name": "La Chaux-de-Fonds Konzentration"
+      },
+      "pcf_level": {
+        "name": "La Chaux-de-Fonds Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "ppy_numeric": {
+        "name": "Payerne Konzentration"
+      },
+      "ppy_level": {
+        "name": "Payerne Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "psn_numeric": {
+        "name": "Sitten Konzentration"
+      },
+      "psn_level": {
+        "name": "Sitten Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pds_numeric": {
+        "name": "Davos Konzentration"
+      },
+      "pds_level": {
+        "name": "Davos Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "plo_numeric": {
+        "name": "Locarno Konzentration"
+      },
+      "plo_level": {
+        "name": "Locarno Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pls_numeric": {
+        "name": "Lausanne Konzentration"
+      },
+      "pls_level": {
+        "name": "Lausanne Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "plu_numeric": {
+        "name": "Lugano Konzentration"
+      },
+      "plu_level": {
+        "name": "Lugano Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
+      },
+      "pge_numeric": {
+        "name": "Genf Konzentration"
+      },
+      "pge_level": {
+        "name": "Genf Stufe",
+        "state": {
+          "none": "Keine",
+          "low": "Tief",
+          "medium": "Mittel",
+          "strong": "Stark",
+          "very_strong": "Sehr stark"
+        }
       }
     }
   }
