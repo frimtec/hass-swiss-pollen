@@ -51,11 +51,9 @@ You can install this component through [HACS](https://hacs.xyz/) to easily recei
 For each selected station and plant type combination, the integration creates two sensors:
 
 1. **Numeric concentration (Sensor)**: Shows the pollen concentration in No/m³ (number per cubic meter)
-   - Entity ID format: `sensor.[station_code]_[plant_name]`
    - Icon: mdi:flower-pollen
 
 2. **Level (Sensor)**: Shows the categorical level of pollen concentration
-   - Entity ID format: `sensor.[station_code]_[plant_name]_2`
    - Possible values: None, Low, Medium, Strong, Very Strong
    - Icon: mdi:flag
 3. **Plant season (BinarySensor)**: Shows whether the plant has pollen season or not. The sensor is 'on' if at least one station in Switzerland reports a value greater than zero).
