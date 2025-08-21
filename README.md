@@ -180,7 +180,7 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
       layout: vertical
     - type: custom:mushroom-template-card
       icon: mdi:city
-      primary: 'Zürich '
+      primary: Zürich
       grid_options:
         columns: 5
         rows: 1
@@ -206,8 +206,6 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
       grid_options:
         columns: 2
         rows: 1
-      tap_action:
-        action: none
       layout: vertical
       picture: >-
         https://github.com/frimtec/hass-swiss-pollen/blob/main/images/grass.png?raw=true
@@ -221,9 +219,12 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
         {% if state == 'on' %}
         green 
         {% endif %}
+      entity: binary_sensor.graser_saison
+      tap_action:
+        action: more-info
     - type: custom:mushroom-template-card
       icon: mdi:flower-pollen
-      entity: sensor.grasses_zurich
+      entity: sensor.graser_zurich_konzentration
       primary: '{{ state_translated(''sensor.graser_zurich_stufe'') }}'
       secondary: '{{ states(''sensor.graser_zurich_konzentration'') }} No/m³'
       grid_options:
@@ -246,7 +247,7 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
         {% endif %}
     - type: custom:mushroom-template-card
       icon: mdi:flower-pollen
-      entity: sensor.grasses_bern
+      entity: sensor.graser_bern_konzentration
       primary: '{{ state_translated(''sensor.graser_bern_stufe'') }}'
       secondary: '{{ states(''sensor.graser_bern_konzentration'') }} No/m³'
       grid_options:
@@ -271,8 +272,6 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
       grid_options:
         columns: 2
         rows: 1
-      tap_action:
-        action: none
       layout: vertical
       picture: >-
         https://github.com/frimtec/hass-swiss-pollen/blob/main/images/birch.png?raw=true
@@ -284,15 +283,15 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
       badge_color: >-
         {% set state =
         states('binary_sensor.meteoswiss_pollen_for_birch_saison') %}
-
         {% if state == 'on' %}
-
         green
-
         {% endif %}
+      entity: binary_sensor.birke_saison
+      tap_action:
+        action: more-info
     - type: custom:mushroom-template-card
       icon: mdi:flower-pollen
-      entity: sensor.birch_zurich
+      entity: sensor.birke_zurich_konzentration
       primary: '{{ state_translated(''sensor.birke_zurich_stufe'') }}'
       secondary: '{{ states(''sensor.birke_zurich_konzentration'') }} No/m³'
       grid_options:
@@ -315,7 +314,7 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
         {% endif %}
     - type: custom:mushroom-template-card
       icon: mdi:flower-pollen
-      entity: sensor.birch_bern
+      entity: sensor.birke_bern_konzentration
       primary: '{{ state_translated(''sensor.birke_bern_stufe'') }}'
       secondary: '{{ states(''sensor.birke_bern_konzentration'') }} No/m³'
       grid_options:
