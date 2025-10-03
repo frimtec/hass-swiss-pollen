@@ -14,6 +14,7 @@ from homeassistant.helpers.entity import DeviceInfo
 
 DEFAULT_POLLING_INTERVAL_MINUTES = 30
 MAX_POLLING_INTERVAL_MINUTES = 8 * 60
+OFF_SEASON_POLLING_INTERVAL_MINUTES = 24 * 60
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -50,6 +51,8 @@ class SwissPollenDataCoordinator(DataUpdateCoordinator[CurrentPollen]):
 
             if current_state.is_plant_active():
                 self._polling_interval = DEFAULT_POLLING_INTERVAL_MINUTES
+            elif current_state.is_off_season():
+                self._polling_interval = OFF_SEASON_POLLING_INTERVAL_MINUTES
             else:
                 self._polling_interval = min(
                     MAX_POLLING_INTERVAL_MINUTES,
