@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Upload zip
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: swiss_pollen
           path: ./custom_components/swiss_pollen
