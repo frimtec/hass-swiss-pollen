@@ -344,7 +344,7 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
 [hacs]: https://github.com/hacs/integration
 [downloads-latest-shield]:https://img.shields.io/github/downloads/frimtec/hass-swiss-pollen/latest/total
 [downloads-shield]:https://img.shields.io/github/downloads/frimtec/hass-swiss-pollen/total
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [license-shield]: https://img.shields.io/github/license/frimtec/hass-swiss-pollen.svg
 [license]: https://opensource.org/licenses/Apache-2.0
 [build-status-shield]: https://github.com/frimtec/hass-swiss-pollen/actions/workflows/build.yml/badge.svg
