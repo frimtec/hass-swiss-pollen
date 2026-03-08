@@ -75,7 +75,7 @@ For each selected plant, the integration creates the following sensors:
     - type: markdown
       content: >-
         <img
-        src="https://github.com/frimtec/hass-swiss-pollen/blob/main/images/grass.png?raw=true"
+        src="https://raw.githubusercontent.com/frimtec/hass-swiss-pollen/refs/heads/main/images/grass.png"
         alt="Gräser" width="55" height="70">
 
         &nbsp;&nbsp;&nbsp;Gräser
@@ -116,7 +116,7 @@ For each selected plant, the integration creates the following sensors:
     - type: markdown
       content: >-
         <img
-        src="https://github.com/frimtec/hass-swiss-pollen/blob/main/images/birch.png?raw=true"
+        src="https://raw.githubusercontent.com/frimtec/hass-swiss-pollen/refs/heads/main/images/birch.png"
         alt="Birke" width="55" height="70">
 
         &nbsp;&nbsp;&nbsp;Birke
@@ -208,7 +208,7 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
         rows: 1
       layout: vertical
       picture: >-
-        https://github.com/frimtec/hass-swiss-pollen/blob/main/images/grass.png?raw=true
+        https://raw.githubusercontent.com/frimtec/hass-swiss-pollen/refs/heads/main/images/grass.png
       badge_icon: |-
         {% set state = states('binary_sensor.graser_saison') %}
         {% if state == 'on' %}
@@ -274,7 +274,7 @@ Requires HACS component [lovelace-mushroom][lovelace-mushroom].
         rows: 1
       layout: vertical
       picture: >-
-        https://github.com/frimtec/hass-swiss-pollen/blob/main/images/birch.png?raw=true
+        https://raw.githubusercontent.com/frimtec/hass-swiss-pollen/refs/heads/main/images/birch.png
       badge_icon: |-
         {% set state = states('binary_sensor.birke_saison') %}
         {% if state == 'on' %}
