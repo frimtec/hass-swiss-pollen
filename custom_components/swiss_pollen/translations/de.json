@@ -15,7 +15,7 @@
         "birch": "Birke",
         "beech": "Buche",
         "oak": "Eiche",
-        "alder": "Ahorn",
+        "alder": "Erle",
         "ash": "Esche",
         "grasses": "Gräser",
         "hazel": "Hasel"
@@ -33,7 +33,7 @@
       "name": "Eiche"
     },
     "alder": {
-      "name": "Ahorn"
+      "name": "Erle"
     },
     "ash": {
       "name": "Esche"
