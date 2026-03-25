@@ -25,7 +25,7 @@ class CurrentPollen:
     def level_by_station(self, station: Station) -> Level:
         value = self.value_by_station(station)
         return (
-            Level.level(value).description
+            Level.level(value, self._plant).description
             if value is not None
             else (Level.NONE if self.is_off_season() else None)
         )
