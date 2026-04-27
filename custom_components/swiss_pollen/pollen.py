@@ -1,5 +1,13 @@
 from datetime import date
-from swiss_pollen import PollenService, PollenResult, Plant, Station, Measurement, Level
+from swiss_pollen import (
+    PollenService,
+    PollenResult,
+    Plant,
+    Station,
+    Measurement,
+    Level,
+    StationState,
+)
 
 OCTOBER = 10
 
@@ -29,6 +37,9 @@ class CurrentPollen:
             if value is not None
             else (Level.NONE if self.is_off_season() else None)
         )
+
+    def station_state(self, station: Station) -> StationState:
+        return self._pollen_result.station_states[station][self._plant]
 
     def station_by_code(self, station_code: str) -> Station:
         return self._pollen_result.station_by_code(station_code)

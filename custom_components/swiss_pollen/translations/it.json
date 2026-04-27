@@ -68,6 +68,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "pzh_station_state": {
+        "name": "Zurigo station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "plz_numeric": {
         "name": "Lucerna concentrazione"
       },
@@ -79,6 +87,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "plz_station_state": {
+        "name": "Lucerna station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "pbs_numeric": {
@@ -94,6 +110,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "pbs_station_state": {
+        "name": "Basilea station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "pbe_numeric": {
         "name": "Berna concentrazione"
       },
@@ -105,6 +129,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "pbe_station_state": {
+        "name": "Berna station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "pmu_numeric": {
@@ -120,6 +152,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "pmu_station_state": {
+        "name": "Münsterlingen station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "pju_numeric": {
         "name": "Jungfraujoch concentrazione"
       },
@@ -131,6 +171,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "pju_station_state": {
+        "name": "Jungfraujoch station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "pbu_numeric": {
@@ -146,6 +194,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "pbu_station_state": {
+        "name": "Buchs station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "pne_numeric": {
         "name": "Neuchâtel concentrazione"
       },
@@ -157,6 +213,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "pne_station_state": {
+        "name": "Neuchâtel station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "pcf_numeric": {
@@ -172,6 +236,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "pcf_station_state": {
+        "name": "La Chaux-de-Fonds station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "ppy_numeric": {
         "name": "Payerne concentrazione"
       },
@@ -183,6 +255,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "ppy_station_state": {
+        "name": "Payerne station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "psn_numeric": {
@@ -198,6 +278,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "psn_station_state": {
+        "name": "Sion station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "pds_numeric": {
         "name": "Davos concentrazione"
       },
@@ -209,6 +297,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "pds_station_state": {
+        "name": "Davos station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "plo_numeric": {
@@ -224,6 +320,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "plo_station_state": {
+        "name": "Locarno station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "pls_numeric": {
         "name": "Losanna concentrazione"
       },
@@ -235,6 +339,14 @@
           "medium": "Medio",
           "strong": "Forte",
           "very_strong": "Molto forte"
+        }
+      },
+      "pls_station_state": {
+        "name": "Losanna station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
         }
       },
       "plu_numeric": {
@@ -250,6 +362,14 @@
           "very_strong": "Molto forte"
         }
       },
+      "plu_station_state": {
+        "name": "Lugano station state",
+        "state": {
+          "online" : "Online",
+          "offline" : "Offline",
+          "error": "Errore"
+        }
+      },
       "pge_numeric": {
         "name": "Ginevra concentrazione"
       },
@@ -262,6 +382,14 @@
           "strong": "Forte",
           "very_strong": "Molto forte"
         }
+      }
+    },
+    "pge_station_state": {
+      "name": "Ginevra station state",
+      "state": {
+        "online" : "Online",
+        "offline" : "Offline",
+        "error": "Errore"
       }
     }
   }

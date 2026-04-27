@@ -52,12 +52,16 @@ For each selected plant, the integration creates the following sensors:
 
 1. **Numeric concentration** (sensor/location): Shows the pollen concentration in No/m³ (number per cubic meter)
    - Icon: mdi:flower-pollen
-
 2. **Level** (sensor/location): Shows the categorical level of pollen concentration
    - Possible values: None, Low, Medium, Strong, Very Strong
    - Icon: mdi:flag
 3. **Plant season** (binary sensor): Shows whether the plant has pollen season or not. The sensor is 'on' if at least one station in Switzerland reports a value greater than zero).
-4. **Backend version** (diagnostic sensor): Shows the version of the backend providing the pollen data.
+4. **Station state** (diagnostic sensor/location):
+   - Possible values: 
+     - Online: Normal state
+     - Offline: Station is temporarily not operational, do not create issues in this repository for that.
+     - Error: The station result cannot be processed, you may create an issue in this repository for that.
+5. **Backend version** (diagnostic sensor): Shows the version of the backend providing the pollen data.
 
 ## Example Dashboard
 ### Standard UI
