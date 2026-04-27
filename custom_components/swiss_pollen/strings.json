@@ -38,6 +38,9 @@
           "strong": "Strong",
           "very_strong": "Very strong"
         }
+      },
+      "station_state": {
+        "name": "Station state"
       }
     }
   }

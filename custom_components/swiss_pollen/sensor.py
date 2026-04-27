@@ -19,7 +19,7 @@ from homeassistant.const import EntityCategory
 from . import SwissPollenDataCoordinator
 from .const import CONF_PLANT_NAME, CONF_STATION_CODES, DOMAIN
 
-from swiss_pollen import Plant, Level, Station
+from swiss_pollen import Plant, Level, Station, StationState
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -50,6 +50,7 @@ async def async_setup_entry(
 
     numeric_sensors = []
     level_sensors = []
+    station_state_sensors = []
     for station_code in station_codes:
         if station_code in station_codes:
             station = coordinator.data.station_by_code(station_code)
@@ -63,6 +64,11 @@ async def async_setup_entry(
                     station, plant, None, SensorDeviceClass.ENUM, None
                 )
             )
+            station_state_sensors.append(
+                SwissPollenSensorEntry(
+                    station, plant, None, SensorDeviceClass.ENUM, None
+                )
+            )
 
     numeric_entities: list[SwissPollenSensorEntry] = [
         SwissPollenNumericSensor(plant, sensorEntry, coordinator)
@@ -72,9 +78,14 @@ async def async_setup_entry(
         SwissPollenLevelSensor(plant, sensorEntry, coordinator)
         for sensorEntry in level_sensors
     ]
+    station_states_entities: list[SwissPollenSensorEntry] = [
+        SwissPollenStationStateSensor(plant, sensorEntry, coordinator)
+        for sensorEntry in station_state_sensors
+    ]
     async_add_entities(
         numeric_entities
         + level_entities
+        + station_states_entities
         + [SwissPollenVersionSensor(plant, coordinator)]
     )
 
@@ -148,6 +159,57 @@ class SwissPollenLevelSensor(
         if self.coordinator.data is None:
             return None
         return self.coordinator.data.level_by_station(self._sensor_entry.station)
+
+
+class SwissPollenStationStateSensor(
+    CoordinatorEntity[SwissPollenDataCoordinator], SensorEntity
+):
+    def __init__(
+        self,
+        plant: Plant,
+        sensor_entry: SwissPollenSensorEntry,
+        coordinator: SwissPollenDataCoordinator,
+    ) -> None:
+        super().__init__(coordinator)
+        self.entity_description = SensorEntityDescription(
+            key=sensor_entry.plant.name,
+            name=sensor_entry.plant.description,
+            native_unit_of_measurement=sensor_entry.native_unit,
+            device_class=sensor_entry.device_class,
+            state_class=sensor_entry.state_class,
+            entity_category=EntityCategory.DIAGNOSTIC,
+        )
+        self._sensor_entry = sensor_entry
+        self._attr_has_entity_name = True
+        self.translation_key = f"{sensor_entry.station.code.lower()}_station_state"
+        self._attr_unique_id = (
+            f"{sensor_entry.station.code}.{sensor_entry.plant.name}.station_state"
+        )
+        self._attr_device_info = SwissPollenDataCoordinator.device_info(plant)
+        self._attr_options = [
+            "online",
+            "offline",
+            "error",
+        ]
+
+    @property
+    def native_value(self) -> StateType | str:
+        if self.coordinator.data is None:
+            return None
+        state = self.coordinator.data.station_state(self._sensor_entry.station)
+        return state.description
+
+    @property
+    def icon(self) -> str | None:
+        """Return the icon based on the current sensor value."""
+        value = self.native_value
+
+        if value == "online":
+            return "mdi:check-circle"
+        if value == "offline":
+            return "mdi:close-circle"
+        else:
+            return "mdi:alert-circle"
 
 
 class SwissPollenVersionSensor(
