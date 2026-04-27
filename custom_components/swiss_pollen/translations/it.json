@@ -69,7 +69,7 @@
         }
       },
       "pzh_station_state": {
-        "name": "Zurigo station state",
+        "name": "Zurigo stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -90,7 +90,7 @@
         }
       },
       "plz_station_state": {
-        "name": "Lucerna station state",
+        "name": "Lucerna stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -111,7 +111,7 @@
         }
       },
       "pbs_station_state": {
-        "name": "Basilea station state",
+        "name": "Basilea stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -132,7 +132,7 @@
         }
       },
       "pbe_station_state": {
-        "name": "Berna station state",
+        "name": "Berna stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -153,7 +153,7 @@
         }
       },
       "pmu_station_state": {
-        "name": "Münsterlingen station state",
+        "name": "Münsterlingen stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -174,7 +174,7 @@
         }
       },
       "pju_station_state": {
-        "name": "Jungfraujoch station state",
+        "name": "Jungfraujoch stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -195,7 +195,7 @@
         }
       },
       "pbu_station_state": {
-        "name": "Buchs station state",
+        "name": "Buchs stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -216,7 +216,7 @@
         }
       },
       "pne_station_state": {
-        "name": "Neuchâtel station state",
+        "name": "Neuchâtel stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -237,7 +237,7 @@
         }
       },
       "pcf_station_state": {
-        "name": "La Chaux-de-Fonds station state",
+        "name": "La Chaux-de-Fonds stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -258,7 +258,7 @@
         }
       },
       "ppy_station_state": {
-        "name": "Payerne station state",
+        "name": "Payerne stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -279,7 +279,7 @@
         }
       },
       "psn_station_state": {
-        "name": "Sion station state",
+        "name": "Sion stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -300,7 +300,7 @@
         }
       },
       "pds_station_state": {
-        "name": "Davos station state",
+        "name": "Davos stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -321,7 +321,7 @@
         }
       },
       "plo_station_state": {
-        "name": "Locarno station state",
+        "name": "Locarno stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -342,7 +342,7 @@
         }
       },
       "pls_station_state": {
-        "name": "Losanna station state",
+        "name": "Losanna stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -363,7 +363,7 @@
         }
       },
       "plu_station_state": {
-        "name": "Lugano station state",
+        "name": "Lugano stato della stazione",
         "state": {
           "online" : "Online",
           "offline" : "Offline",
@@ -385,7 +385,7 @@
       }
     },
     "pge_station_state": {
-      "name": "Ginevra station state",
+      "name": "Ginevra stato della stazione",
       "state": {
         "online" : "Online",
         "offline" : "Offline",
